@@ -1,0 +1,25 @@
+{% extends 'eventWebsite/base.html' %}
+{% block content %}
+{%load static%}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6 border">
+            <h2>ADD POST</h2>
+            <form action="" class="mt-5" method="post" enctype="multipart/form-data">
+                <table>
+               {%csrf_token%}
+                {{form.as_table}}
+                     </table>
+                <div class="mb-5 mt-5">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-3">
+             <a class="btn btn-danger" href="{% url 'post_list' %}" role="button">Go Back</a>
+        </div>
+    </div>
+</div>
+{%endblock%}

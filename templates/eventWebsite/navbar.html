@@ -1,0 +1,72 @@
+{% load static %}
+
+<!--  navbar-->
+<nav class="navbar navbar-expand-lg " style="background-color: #ffa500;">
+    <div id="leftrightspace" class="container-fluid ">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img class="img-fluid" width="200" src="{% static 'events.png' %}" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item text-center">
+                    <a class="nav-link " href="{% url 'about_us' %}">HOME</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="{% url 'about_us' %}">SERVICES</a>
+                </li>
+
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="{% url 'about_us' %}">CONTACT US</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="{% url 'about_us' %}">ABOUT US</a>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav buttons-navbar mt-auto mb-auto ms-auto">
+                <li class="nav-item me-5">
+                    <button class="btn btn-info" onclick="window.location.href='{% url 'login' %}'" id="sign_in">Sign
+                        In
+                    </button>
+                </li>
+                <li class="nav-item me-5">
+                    <button class="btn btn-dark" onclick="window.location.href='{% url 'register' %}'" id="sign_up">Sign
+                        Up
+                    </button>
+                </li>
+                <li class="nav-item me-5">
+                    <button type="button" class="btn btn-success me-5"
+                            onclick="window.location.href='{% url 'post_list' %}'" disabled id="post_list">DashBoard
+                    </button>
+                    <button type="button" class="btn btn-outline-danger"
+                            onclick="window.location.href='{% url 'logout' %}'" disabled id="logout">LogOut
+                    </button>
+
+                </li>
+                {%if user.is_authenticated%}
+                <script type="text/javascript">
+                    $("#logout").removeAttr("disabled"); //It is must
+                    $('#logout').removeClass('disabled');
+                    $("#post_list").removeAttr("disabled"); //It is must
+                    $('#post_list').removeClass('disabled');
+                    //$("sign_in").attr("disabled",true); It is not must
+                    $('#sign_in').addClass('disabled');
+                    //$('sign_up').attr("disabled",true); It is not must
+                    $('#sign_up').addClass('disabled');
+
+                </script>
+                {%endif%}
+
+
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+

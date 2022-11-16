@@ -1,0 +1,109 @@
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <!-- Carousal Start -->
+    <div class="row pt-4">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="1500">
+                    <img src="{% static 'img_10.png' %}" class="d-block w-100" alt="..." height="700">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> #1 Event Managers in Kerala </h5>
+                        <p>ആഘോഷങ്ങളുടെ മാറ്റ് കുറയ്ക്കേണ്ട, ഇവന്റ് മാനേജ്‌മന്റ് ടീം ഇവിടുണ്ട്....</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img_2.png' %}" class="d-block w-100" alt="..." height="700">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> #1 Event Managers in Kerala </h5>
+                        <p>ആഘോഷങ്ങളുടെ മാറ്റ് കുറയ്ക്കേണ്ട, ഇവന്റ് മാനേജ്‌മന്റ് ടീം ഇവിടുണ്ട്....</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img_3.png' %}" class="d-block w-100" alt="..." height="700">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> #1 Event Managers in Kerala </h5>
+                        <p>ആഘോഷങ്ങളുടെ മാറ്റ് കുറയ്ക്കേണ്ട, ഇവന്റ് മാനേജ്‌മന്റ് ടീം ഇവിടുണ്ട്....</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Carousal END -->
+
+    <div class="row pt-5">
+
+        <!-- recently posted -->
+        <div class="recentjobs container bg-white ">
+            <h4 class="text-center">RECENTLY POSTED</h4>
+            <hr>
+            <div class=" row d-flex justify-content-center">
+
+                <div class="div col-9 mt-2 mb-2"><!-- job card -->
+                    {% if posts %}
+                    {% for post in posts %}
+                    <div class="card job-card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-6">
+                                    <a href=""> <img class="mt-2 " width="100"
+                                                     src={{post.pic.url}} alt=""> </a>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card-left mt-2">
+                                        <h5>{{post.event_title}} </h5>
+                                        <p><i class="fa-solid fa-location-dot"></i>{{post.location}} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 ">
+
+                                    <div class=" right-details mt-6">
+                                        <p><i class="fa-regular fa-clock"></i> {{post.event_date}} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 ">
+                                    <button class="btn btn-warning" onclick="window.location.href='{% url 'post_detail' post.id %}'"> View
+                                        Details <i class="fa-solid fa-angle-right"> </i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- job card end-->
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- recently posted end -->
+    </div>
+</div>
+<!-- How  Apply Process End-->
+
+
+{% endblock %}

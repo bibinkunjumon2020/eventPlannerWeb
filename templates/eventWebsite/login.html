@@ -1,0 +1,41 @@
+
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div style="background-color:#e1eaf7"  >
+
+
+<div class="" style="">
+    <div class="row d-flex justify-content-center  ">
+        <div class="mt-5"></div>
+
+        <div class="col-sm-3 mt-5 mt-5 mb-5  card border">
+            <div class="card-body">
+
+                <img src="{%static 'avatar.png' %}" class="rounded mx-auto d-block" width="150" height="150"
+             alt="...">
+
+                <h5 class="text-secondary" align="center" > User</h5>
+
+            <form action="" class="mt-3" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <div class="mb-3 mt-3 text-center">
+                    <button type="submit" class="btn btn-primary form-control">login</button>
+                    <div class="mt-3">
+                        <p>New to Event Manager? <a class="mt-5" style="text-decoration:none" href="{% url 'register' %}">Register</a></p>
+                    </div>
+                </div>
+            </form>
+            </div>
+
+        </div>
+                <div class="mt-5"></div>
+
+
+    </div>
+</div>
+</div>
+{% endblock %}

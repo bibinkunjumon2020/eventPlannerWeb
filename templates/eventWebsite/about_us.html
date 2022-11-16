@@ -1,0 +1,106 @@
+{% extends 'eventWebsite/base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row pt-4">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="1500">
+                    <img src="{% static 'img_10.png' %}" class="d-block w-100" alt="..." height="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> #1 job site in the World </h5>
+                        <p>JobHub strives to put job seekers first, giving them free access to search for jobs, post
+                            resumes, and search companies. .</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img_2.png' %}" class="d-block w-100" alt="..." height="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>#1 JobHub Mentorship..!</h5>
+                        <p>You can depend on JobHub throughout your job seeking journey,Resume building,Tech guidance,HR
+                            interview preparations</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img_3.png' %}" class="d-block w-100" alt="..." height="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Become a certified skilled labour</h5>
+                        <p>Upload resume to JobHub and sit relax.We do the job search for you.. </p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-7">
+
+            <h2 style="padding" class="pt-5">About Event Manager</h2>
+            <p class="pt-3">
+                Fresh ideas, new trends in events and entertainment, meticulous detailing, 24x7 work attitude, presence
+                of mind and a passion for perfectionism to bring a method in the madness, are just some of the reasons
+                that make an event click.
+
+                We are one of Kerala's Top Event Management Company who serves their client as per their requirement
+                with best wedding arrangements.Whether it is a mini-store event or a king size show, Executive Events
+                makes it an ‘event to remember’. We create unique themes for each event and let everything about the
+                event speak the same language, in a seamless manner. From the people to the props, stage setting to
+                table setting, décor to dress, food to fun and everything else in between.
+            </p>
+            <p class="pt-3">
+                At Executive Events, we ensure flawless execution of every event. Creativity, knowledge, skill,
+                experience, careful planning, discipline, commitment, passion, timeliness and a talent pool of versatile
+                event professionals are the underlying strengths of our company dedicated to make every event a
+                successful event.
+            </p>
+            <h3 class="pt-5">
+                10 good reasons why you need to partner with us
+            </h3>
+            <p class="pt-3">
+                Customised and tailor-made solutions that address your real need
+                Niche expertise and valuable experience in the field that leaves no room for error
+                A talent pool of professionals to ideate and implement innovative themes and work closely with you to
+                ensure smooth progress
+                Resourceful, passionate, energetic and dedicated team of event/ conference/ destination management
+                professionals
+                A professional work attitude that helps you to achieve optimum results from your event or conference
+                Thorough planning, creativity, attention to detail and efficient execution to ascertain that your
+                conference or seminar is well within your budget and timeline
+                A repository of knowledge and contacts in the industry that help you pick competent service providers
+                Transparent processes and pricing, and contracted rate with service providers to work out cost-effective
+                events and conferences
+                A strong presence that gives you the upper hand in negotiation with agencies
+                A 100 per cent commitment to make every event, eventful.
+            </p>
+            <h3 class="pt-5">
+                Who are we?
+            </h3>
+            <p class="pt-3">
+                Sayone Stars..
+        </div>
+        <div class="col-5 pt-5">
+            <img src="{% static 'about.png' %}" class="w-100 rounded mx-auto d-block" alt="..."
+                 height="500">
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
