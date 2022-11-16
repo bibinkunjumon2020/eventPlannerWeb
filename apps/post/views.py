@@ -14,6 +14,12 @@ from apps.post.models import PostModel
 class MyAccountView(TemplateView):
     """User dashboard rendering class"""
     template_name = "eventWebsite/post_list.html"
+class MyServicesView(TemplateView):
+    """User dashboard rendering class"""
+    template_name = "eventWebsite/services.html"
+class MyContactView(TemplateView):
+    """User dashboard rendering class"""
+    template_name = "eventWebsite/contact.html"
 
 
 # Adding posts by a specific user
