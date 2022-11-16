@@ -36,5 +36,7 @@ urlpatterns = [
     path('post_detail/<int:pk>', post_views.PostDetailView.as_view(), name="post_detail"),
     path('post_update/<int:pk>', post_views.PostUpdateView.as_view(), name="post_update"),
     path('my_account', post_views.MyAccountView.as_view(), name="my_account"),
+    path('services', post_views.MyServicesView.as_view(), name="services"),
+    path('contact', post_views.MyContactView.as_view(), name="contact"),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
