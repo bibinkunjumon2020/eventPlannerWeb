@@ -1,0 +1,36 @@
+{% extends 'eventWebsite/base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row p-5 m-5">
+        <div class="col-2"></div>
+        <div class="col-10">
+
+            <div class="card text-center">
+                <div class="card-header">
+                                <img src="{% static 'img11.png' %}" class="w-100 rounded mx-auto d-block" alt="..."
+                 height="500">
+
+                    Contact Us
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Address
+                        KV 8, 5TH Cross Road
+                        Panampilly Nagar, Kochi-682036.</h5>
+                    <p class="card-text">Phone
+                        +91 - 9947058123,
+                        0484 - 4030537, 2317070 </p>
+                    <p>Email
+                        info@executiveevents.in</p>
+                </div>
+                <div class="card-footer text-muted">
+                    #1 Event Planners in Kerala
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
