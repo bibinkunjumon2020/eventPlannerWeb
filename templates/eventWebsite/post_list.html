@@ -1,31 +1,7 @@
 {% extends 'eventWebsite/base.html' %}
 {% block content %}
 {% load static %}
-<!--
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-            {%if messages%}
-            {%for m in messages%}
-            {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{m}}</strong> ***
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endif %}
-            {% if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{m}}</strong> ***
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endif %}
-            {%endfor%}
-            {%endif%}
-        </div>
-        <div class="col-4"></div>
-    </div>
--->
+        <!-- Adding posts template -->
 <div class="container mb-5">
     <div class="row mt-5">
         <div class="col-2">
@@ -62,6 +38,7 @@
                         <img src={{post.pic.url}} class="card-img-top" alt="..." width="150" height="150">
                         {% endif %}
                     </td>
+        <!-- 3 buttons for specific functions -->
 
                     <td>
                         <a href="{% url 'post_update' post.id %}" class="btn btn-warning ">Edit</a><br>

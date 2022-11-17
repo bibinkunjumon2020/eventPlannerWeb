@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+<!-- Basic HTML data for all other templates -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +10,11 @@
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
 
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/12046219d2.js" crossorigin="anonymous"></script>
@@ -21,16 +23,17 @@
 
     <!--jquery cdn-->
     <script
-      src="https://code.jquery.com/jquery-3.6.1.js"
-      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-      crossorigin="anonymous"></script>
-
+            src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
 
 
 </head>
 <body>
 
-{% include 'eventWebsite/navbar.html' %}
+{% include 'eventWebsite/navbar.html' %}      <!--For all html templates navbar is assigned-->
+<!-- Message display all other template shows after navbar -->
+
 <div class="container mb-5">
     <div class="row">
         <div class="col-4"></div>
@@ -54,12 +57,15 @@
         </div>
         <div class="col-4"></div>
     </div>
+</div>
 
-{% block content %}
+    {% block content %}
 
-{% endblock %}
+    <!-- Here tags of all other template added in respective files -->
 
-{% include 'eventWebsite/footer.html' %}
+    {% endblock %}
+
+    {% include 'eventWebsite/footer.html' %}     <!-- Here Footer tags of all other template -->
 
 </body>
 </html>
