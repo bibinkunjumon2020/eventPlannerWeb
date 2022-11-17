@@ -8,7 +8,7 @@ from apps.verified_access import login_required
 import logging
 
 
-# Create your views here.
+# Create your User views here.
 class HomeView(TemplateView):
     """
         Loading the first page in our website.Used Template view
@@ -27,7 +27,6 @@ class RegistrationView(View):
     """ Method for accepting user credentials and creating a User
         Django inbuilt User Model is used.
     """
-
     def get(self, request, *args, **kwargs):
         """
         Rendering form fields
@@ -43,11 +42,11 @@ class RegistrationView(View):
         if form.is_valid():
             password = form.cleaned_data.get('password')
             user = form.save(commit=False)
-            user.set_password(password)
+            user.set_password(password) # Password is hashed.
             user.save()
             print("Registration Success")
             messages.success(self.request, "Registered as a User")
-            return redirect('login')  # Success redirected to Login View
+            return redirect('login')  # Success redirected to Log-in View
         else:
             print("Form Error")
             messages.error(self.request, "Error in Registration")

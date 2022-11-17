@@ -9,6 +9,7 @@ class DateInput(forms.DateInput):
 
 
 def validate_date(date):
+    # to validate the date is earlier or further only future dates allowed
     if date < timezone.now().date():
         raise ValidationError("Future Events Only-Check Date")
 class PostForm(forms.ModelForm):
