@@ -21,7 +21,14 @@ class PostForm(forms.ModelForm):
 
         widgets={
             "event_date":forms.DateInput(attrs={'type':'date',}),
-            "location":forms.TextInput(attrs={"class": "form-control", 'placeholder': 'event location','pattern':'[A-Z a-z . \']+','title':'Enter Characters Only'}),
+            "location":forms.TextInput(attrs={"class": "form-control", 'placeholder': 'event location','pattern':'[A-Z a-z . , \']+','title':'Enter Characters Only'}),
             "event_title":forms.TextInput(attrs={"class": "form-control", 'placeholder': 'Event tag name ?','pattern':'[A-Z a-z ! : # 0-9 . \']+','title':'Improper Input Symbol [A-Z a-z ! : # 0-9 . \']'}),
             "content":forms.Textarea(attrs={"class": "form-control",'placeholder':"Brief description about the event..."})
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        event_date = cleaned_data.get('event_date')
+        today = timezone.now().date()
+        if event_date < today:
+            raise ValidationError("Add Only Future Events..Check Date",code='only book for future')

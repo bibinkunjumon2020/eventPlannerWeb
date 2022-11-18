@@ -115,5 +115,6 @@ class PostUpdateView(UpdateView):
     success_url = reverse_lazy('post_list')
 
     def form_valid(self, form):
-        messages.success(self.request, "Success Edited")
+        messages.success(self.request, "Post Updated")
         return super().form_valid(form) # It helps to load existing value to the form
+
