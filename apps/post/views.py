@@ -29,6 +29,7 @@ class MyContactView(TemplateView):
     template_name = "eventWebsite/contact.html"
 
 # Add New Post by a Logged-in user
+@method_decorator(login_required, name="dispatch")
 class PostCreateView(CreateView):
     """
     CreateView used to new post creation with form given data,depends on model
@@ -48,6 +49,7 @@ class PostCreateView(CreateView):
 
 
 # Listing Posts of a Logged-in user
+@method_decorator(login_required, name="dispatch")
 class ListPostView(ListView):
     """
     ListView used to list of posts with form given data,depends on model
@@ -85,7 +87,7 @@ class AllPostListView(ListView):
 #   id=self.kwargs.get('pk')
 #  return PostModel.objects.get(id=id).delete()
 
-
+@method_decorator(login_required, name="dispatch")
 def delete_post(request, *args, **kwargs):  # path : todos/delete/<int:id>
     """
     It's a function for deleting list entries
@@ -103,7 +105,7 @@ class PostDetailView(DetailView):
     model = PostModel
     context_object_name = "post" # with this data can be accessed in front end html
 
-
+@method_decorator(login_required, name="dispatch")
 class PostUpdateView(UpdateView):
     """
     UpdateView used to update the detail of a specific post
