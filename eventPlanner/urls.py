@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include,re_path
 from apps.user import views as user_views
 from apps.post import views as post_views
 from django.conf.urls.static import static
 from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,3 +41,12 @@ urlpatterns = [
     path('contact', post_views.MyContactView.as_view(), name="contact"),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# debug code
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        #re_path(r'^__debug__/',include('debug_toolbar.urls')),
+        #path('__debug__',include('debug_toolbar.urls')),
+        path('__debug__',include(debug_toolbar.urls)),
+    ] + urlpatterns
