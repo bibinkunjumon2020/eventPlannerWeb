@@ -79,15 +79,12 @@ class AllPostListView(ListView):
     # Delete Post
 
 
-# class DeletePostView(DeleteView):
+#class DeletePostView(DeleteView):  # but there is no sperate view for delete
 #   template_name = "eventWebsite/post_list.html"
-#  success_url = 'post_list'
-# def get_queryset(self):
-#    print("pk=",self.kwargs.get('pk'))
-#   id=self.kwargs.get('pk')
-#  return PostModel.objects.get(id=id).delete()
+#   model = PostModel
+#   success_url = reverse_lazy('post_list')
 
-@method_decorator(login_required, name="dispatch")
+
 def delete_post(request, *args, **kwargs):  # path : todos/delete/<int:id>
     """
     It's a function for deleting list entries
