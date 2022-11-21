@@ -7,7 +7,6 @@ from apps.user import forms
 from apps.verified_access import login_required
 import logging
 
-
 # Create your User views here.
 class HomeView(TemplateView):
     """
