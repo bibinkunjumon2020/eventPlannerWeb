@@ -14,16 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include,re_path
+from django.urls import path, include, re_path
 from apps.user import views as user_views
 from apps.post import views as post_views
 from django.conf.urls.static import static
 from django.conf import settings
+# celery
+from apps.task.task import generate_pdf
+from apps.post.models import PostModel
 
+from django_downloadview import ObjectDownloadView
+
+download = ObjectDownloadView.as_view(model=PostModel, file_field='download_file')  # Used to download file from db
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', user_views.HomeView.as_view(), name='home'),
+    # path('', user_views.HomeView.as_view(), name='home'),
     path('', post_views.AllPostListView.as_view(), name='home'),
     path('about_us', user_views.AboutUsView.as_view(), name="about_us"),
     path('register', user_views.RegistrationView.as_view(), name="register"),
@@ -33,20 +39,24 @@ urlpatterns = [
     path('all_post_list', post_views.AllPostListView.as_view(), name="all_post_list"),
     path('add_post', post_views.PostCreateView.as_view(), name="add_post"),
     path('delete_post/<int:pk>', post_views.delete_post, name="delete_post"),
-    #path('delete_post/<int:pk>', post_views.DeletePostView.as_view(), name="delete_post"),
+    # path('delete_post/<int:pk>', post_views.DeletePostView.as_view(), name="delete_post"),
     path('post_detail/<int:pk>', post_views.PostDetailView.as_view(), name="post_detail"),
     path('post_update/<int:pk>', post_views.PostUpdateView.as_view(), name="post_update"),
     path('my_account', post_views.MyAccountView.as_view(), name="my_account"),
     path('services', post_views.MyServicesView.as_view(), name="services"),
     path('contact', post_views.MyContactView.as_view(), name="contact"),
+    #path('download_post/<int:pk>', post_views.generate_pdf, name="download_post"),
+    path('download_post/<int:pk>', download, name="download_post"), # its working
+
 ]
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # debug code
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
-        #re_path(r'^__debug__/',include('debug_toolbar.urls')),
-        #path('__debug__',include('debug_toolbar.urls')),
-        path('__debug__',include(debug_toolbar.urls)),
-    ] + urlpatterns
+                      # re_path(r'^__debug__/',include('debug_toolbar.urls')),
+                      # path('__debug__',include('debug_toolbar.urls')),
+                      path('__debug__', include(debug_toolbar.urls)),
+                  ] + urlpatterns

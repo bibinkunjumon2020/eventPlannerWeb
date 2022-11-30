@@ -1,11 +1,16 @@
 {% extends 'eventWebsite/base.html' %}
 {% block content %}
 {% load static %}
-        <!-- Adding posts template -->
+<!-- Adding posts template -->
 <div class="container mb-5">
     <div class="row mt-5">
         <div class="col-2">
             <a class="btn btn-primary" href="{% url 'add_post' %}" role="button">Add New Post</a>
+            <form method="post">
+                {% csrf_token %}
+            <button class="btn btn-warning" name="post_list_btn" value="generate_pdf">
+                Generate PDFs</button>
+                </form>
         </div>
         <div class="col-8">
         </div>
@@ -38,7 +43,7 @@
                         <img src={{post.pic.url}} class="card-img-top" alt="..." width="150" height="150">
                         {% endif %}
                     </td>
-        <!-- 3 buttons for specific functions -->
+                    <!-- 3 buttons for specific functions -->
 
                     <td>
                         <a href="{% url 'post_update' post.id %}" class="btn btn-warning ">Edit</a><br>

@@ -1,7 +1,7 @@
 {% extends 'eventWebsite/base.html' %}
 {% block content %}
 {%load static%}
-        <!-- Post detail are shown as an image top card -->
+<!-- Post detail are shown as an image top card -->
 
 <div class="container">
     <div class="row mt-5">
@@ -23,6 +23,11 @@
         </div>
         <div class="col-4">
             <button class="btn btn-danger" onclick="history.back()"> Back
+                <i class="fa-solid fa-angle-right"> </i></button>
+            <button class="btn btn-warning">
+                {% if post.download_file %}
+                <a href="{% url 'download_post' post.id %}"> download pdf</a>
+                {%endif%}
                 <i class="fa-solid fa-angle-right"> </i></button>
         </div>
     </div>

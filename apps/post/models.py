@@ -13,3 +13,4 @@ class PostModel(models.Model):
     pic = models.ImageField(upload_to='events',
                             validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg'])], null=False,
                             blank=False)
+    download_file = models.FileField(upload_to='event_pdf',blank=True,null=True)
