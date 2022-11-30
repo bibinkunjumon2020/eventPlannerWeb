@@ -132,13 +132,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = ['127.0.0.1']  # debug code
 
-
-# celery broker and result for handling asynch tasks.
-CELERY_BROKER_URL =  "redis://localhost:6379/0"
-
-# time zone
-CELERY_TIMEZONE = "America/New_York"
-
 # This is for setting up cache for faster page loading .Here redis cache used .Only available from Django 4.0.
 # https://docs.djangoproject.com/en/4.1/topics/cache/
 CACHES = {
@@ -146,4 +139,20 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': 'redis://localhost:6379/0',
     }
+}
+
+# celery broker and result for handling asynch tasks.
+CELERY_BROKER_URL =  "redis://localhost:6379/0"
+
+# time zone
+CELERY_TIMEZONE = "America/New_York"   # we can give any time zone.
+#CELERY_IMPORTS = ("apps.task.task", )
+CELERY_BEAT_SCHEDULE = {
+      'generate-every-10-seconds': {
+        'task': 'task.generate_pdf', # give what's shown in celery list discovered tasks.
+        'schedule': 10.0,
+        'options': {
+            'expires': 15.0,
+        },
+    },
 }
