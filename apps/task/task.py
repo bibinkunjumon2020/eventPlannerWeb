@@ -12,7 +12,6 @@ def generate_pdf():
     print("__________inside celery download all pdfs task______")
     events = PostModel.objects.all()
     for event in events:
-        print(event.id)
         x1 = 100
         y1 = 20
         pdf = FPDF()
@@ -27,13 +26,13 @@ def generate_pdf():
         # save file with extension
         BASE_DIR = os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__))))  # /Users/bibinkunjumon/PycharmProjects/eventPlannerWeb
-        print(BASE_DIR)
+        #creating file name and saving - basedir+the dir we want+ random name.
         file_name = BASE_DIR + '/media/event_pdf/' + uuid4().hex + str(event.id) + ".pdf"
         # pdf.output(BASE_DIR + '/media/event_pdf/' + str(event.id) + ".pdf")
         pdf.output(file_name)
-        #field = BASE_DIR + '/media/event_pdf/' + str(event.id) + ".pdf"
+        # field = BASE_DIR + '/media/event_pdf/' + str(event.id) + ".pdf"
 
         print("file path", file_name)
-        PostModel.objects.filter(id=event.id).update(download_file=file_name)
+        PostModel.objects.filter(id=event.id).update(download_file=file_name) # latest name to model
 
     return HttpResponse("success")

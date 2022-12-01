@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',  # debug code
     'django_celery_results',
+    'django_celery_beat',
     'apps.post',
     'apps.user',
     'apps.task',
@@ -142,17 +143,22 @@ CACHES = {
 }
 
 # celery broker and result for handling asynch tasks.
-CELERY_BROKER_URL =  "redis://localhost:6379/0"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
 
 # time zone
-CELERY_TIMEZONE = "America/New_York"   # we can give any time zone.
-#CELERY_IMPORTS = ("apps.task.task", )
+CELERY_TIMEZONE = "America/New_York"  # not working using gmt.
+# CELERY_IMPORTS = ("apps.task.task", )
+
+# Specific celery_beat code
+"""
 CELERY_BEAT_SCHEDULE = {
-      'generate-every-10-seconds': {
-        'task': 'task.generate_pdf', # give what's shown in celery list discovered tasks.
+    'generate-every-10-seconds-bibin': {
+        'task': 'task.generate_pdf',  # give what's shown in celery list discovered tasks.
         'schedule': 10.0,
         'options': {
             'expires': 15.0,
         },
     },
-}
+}"""
+
+
