@@ -17,8 +17,9 @@ app.autodiscover_tasks()
 # schedule
 from celery.schedules import crontab
 
-app.conf.beat_schedule = {
-    # Executes every Monday morning at 7:30 a.m.
+app.conf.beat_schedule = { #https://docs.celeryq.dev/en/latest/userguide/periodic-tasks.html
+    # Executes every at a prticular minute,hr,day of week.
+    #you can check these schedules in admin page and disable or enable or delete.
     'add-every-minute-hour-day4/thursday': {
         'task': 'task.generate_pdf',
         'schedule': crontab(hour='*', minute='*', day_of_week=4),
