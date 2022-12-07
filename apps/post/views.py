@@ -79,8 +79,11 @@ class ListPostView(ListView):
     def post(self,*args,**kwargs): # For using btn generate_pdf
         btn = self.request.POST.get('post_list_btn')
         if btn == 'generate_pdf':
-            response = generate_pdf.delay()
-            print("Task-Id.....", response)
+            #response = generate_pdf.delay()
+            #https://docs.celeryq.dev/en/stable/userguide/calling.html
+            response_1 = generate_pdf.apply_async(countdown=10) # this task call after 10 sec
+            response_1 = generate_pdf.apply_async(eta=now + timedelta(seconds=10)) # this task call after 10 sec
+            print("Task-Id.....", response_1)
             return redirect("post_list")
         return HttpResponse(status=400)
 """

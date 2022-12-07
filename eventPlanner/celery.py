@@ -22,7 +22,11 @@ app.conf.beat_schedule = { #https://docs.celeryq.dev/en/latest/userguide/periodi
     #you can check these schedules in admin page and disable or enable or delete.
     'add-every-minute-hour-day4/thursday': {
         'task': 'task.generate_pdf',
-        'schedule': crontab(hour='*', minute='*', day_of_week=4),
+        'schedule': crontab(hour='*', minute='*', day_of_week=1),
+    },
+    'testing _title': {
+        'task': 'task.generate_pdf',
+        'schedule': crontab(hour='*', minute='*', day_of_week=1),
     },
     'generate-every-10-seconds-bibin-3': {
         'task': 'task.generate_pdf',  # give what's shown in celery list discovered tasks.
